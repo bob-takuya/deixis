@@ -24,10 +24,11 @@ Design commitments (inherited from the M0 contract, ``deixis.core.types``):
   ``{"error": {"type": ..., "message": ...}}`` JSON rather than raised, so a Grasshopper
   wire always receives parseable JSON.
 
-There is no ``deixis.io.serialize`` module in the tree yet, so the (spec | realization)
-<-> JSON serialization the components need is implemented here and exposed publicly
-(:func:`spec_to_json`, :func:`spec_from_json`, :func:`realization_to_json`,
-:func:`realization_from_json`) so a component can round-trip without re-parsing by hand.
+This module keeps its own (spec | realization) <-> JSON wire format (``spec_to_json``,
+``spec_from_json``, ``realization_to_json``, ``realization_from_json``) — the format the
+Grasshopper components round-trip. ``deixis.io.serialize`` is a separate, more general
+serializer (adds ``dumps``/``content_hash``); the two formats differ in detail.
+TODO(tech-debt): unify on a single canonical wire format (they were written in parallel).
 """
 from __future__ import annotations
 
