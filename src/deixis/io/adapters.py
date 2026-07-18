@@ -24,11 +24,9 @@ Design commitments (inherited from the M0 contract, ``deixis.core.types``):
   ``{"error": {"type": ..., "message": ...}}`` JSON rather than raised, so a Grasshopper
   wire always receives parseable JSON.
 
-This module keeps its own (spec | realization) <-> JSON wire format (``spec_to_json``,
-``spec_from_json``, ``realization_to_json``, ``realization_from_json``) — the format the
-Grasshopper components round-trip. ``deixis.io.serialize`` is a separate, more general
-serializer (adds ``dumps``/``content_hash``); the two formats differ in detail.
-TODO(tech-debt): unify on a single canonical wire format (they were written in parallel).
+Serialization is delegated to ``deixis.io.serialize`` (the single canonical wire format);
+``spec_to_json``/``spec_from_json``/``realization_to_json``/``realization_from_json`` here
+are thin public re-exports so a Grasshopper component can round-trip without re-parsing.
 """
 from __future__ import annotations
 
@@ -726,3 +724,31 @@ def lift(
         return _dump(spec_to_json(spec))
     except Exception as exc:
         return _error(exc)
+
+
+# ---------------------------------------------------------------------------
+# Canonical serialization: delegate to deixis.io.serialize (single source of truth).
+# Formats are now identical (io.serialize emits the same rcc8_names convenience). The
+# local encoders above are kept only as internal helpers; these public names win.
+# ---------------------------------------------------------------------------
+from deixis.io import serialize as _ser  # noqa: E402
+
+
+def spec_to_json(spec: RelSpec) -> dict:  # noqa: F811
+    return _ser.relspec_to_json(spec)
+
+
+def spec_from_json(data: "JsonLike") -> RelSpec:  # noqa: F811
+    if isinstance(data, str):
+        data = json.loads(data)
+    return _ser.relspec_from_json(data)
+
+
+def realization_to_json(real: Realization) -> dict:  # noqa: F811
+    return _ser.realization_to_json(real)
+
+
+def realization_from_json(data: "JsonLike") -> Realization:  # noqa: F811
+    if isinstance(data, str):
+        data = json.loads(data)
+    return _ser.realization_from_json(data)

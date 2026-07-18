@@ -116,10 +116,13 @@ def region_from_json(d: Any) -> Region:
 # ---------------------------------------------------------------- RelationConstraint
 
 def relation_constraint_to_json(c: RelationConstraint) -> dict:
+    from deixis.core import rcc8  # local import: rcc8_mask is authoritative; names are derived
     return {
         "src": c.src,
         "dst": c.dst,
         "rcc8_mask": c.rcc8_mask,
+        # human-readable convenience, always derivable from rcc8_mask (ignored on decode)
+        "rcc8_names": sorted(rcc8.names(c.rcc8_mask)),
         "status": c.status.value,
         "id": c.id,
         "prov": provenance_to_json(c.prov),
