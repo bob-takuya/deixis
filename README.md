@@ -10,12 +10,12 @@ A relation-first way to describe space: qualitative RCC-8 relations plus contact
 
 | | |
 |---|---|
-| ✅ Works | Python core (`src/deixis`, ~11k lines): RCC-8 / RCC-5 algebra, path consistency, contact witnesses, deferred grounding, Z3-backed box solver, reverse verification, serialization. **695 tests passed** (re-run 2026-09-28, Python 3.12, `z3-solver` 4.15.4; ~2 s). |
-| ✅ Works | Headless demos `demo1_contact_dimension` and `demo7_roundtrip` run and print their comparisons (see Usage). |
-| 🚧 Partial | Geometry is **axis-aligned boxes with exact rational coordinates** only. Realizations are "relation-preserving re-synthesis" in that domain — they do not preserve original surfaces or topology of arbitrary input geometry. |
-| 🚧 Partial | Grasshopper layer (`docs/grasshopper/`, 7 components for Rhino 8 CPython): each component is a thin shell over the tested `deixis.io.adapters` functions, but the Rhino side is set up by hand (paste scripts, add params) and was not re-verified for this README. |
-| 🚧 Partial | Extensions beyond the core claim — flow fields (DEC), isovists, space-syntax access graph, Allen / Rectangle Algebra, presolve, Dulmage–Mendelsohn diagnostics — are research aids with their scope limits stated in module docstrings. |
-| ⚠️ Known issues | Grasshopper scripts and `SETUP.md` contain a hard-coded default `src` path that must be edited (or passed as the `deixis_src` input). `SETUP.md` cites an older test count. The design spec referenced in code docstrings ("v7 spec") is not included in the repo. No LICENSE file. On some platforms `z3-solver` has no wheel for the newest release and fails to build from source — install with a prebuilt wheel. |
+| Works | Python core (`src/deixis`, ~11k lines): RCC-8 / RCC-5 algebra, path consistency, contact witnesses, deferred grounding, Z3-backed box solver, reverse verification, serialization. **695 tests passed** (re-run 2026-09-28, Python 3.12, `z3-solver` 4.15.4; ~2 s). |
+| Works | Headless demos `demo1_contact_dimension` and `demo7_roundtrip` run and print their comparisons (see Usage). |
+| Partial | Geometry is **axis-aligned boxes with exact rational coordinates** only. Realizations are "relation-preserving re-synthesis" in that domain — they do not preserve original surfaces or topology of arbitrary input geometry. |
+| Partial | Grasshopper layer (`docs/grasshopper/`, 7 components for Rhino 8 CPython): each component is a thin shell over the tested `deixis.io.adapters` functions, but the Rhino side is set up by hand (paste scripts, add params) and was not re-verified for this README. |
+| Partial | Extensions beyond the core claim — flow fields (DEC), isovists, space-syntax access graph, Allen / Rectangle Algebra, presolve, Dulmage–Mendelsohn diagnostics — are research aids with their scope limits stated in module docstrings. |
+| Known issues | Grasshopper scripts and `SETUP.md` use a placeholder `src` path that must be edited (or passed as the `deixis_src` input). `SETUP.md` cites an older test count. The design spec referenced in code docstrings ("v7 spec") is not included in the repo. On some platforms `z3-solver` has no wheel for the newest release and fails to build from source — install with a prebuilt wheel. |
 
 **Development note:** commit history records AI-assisted development (Claude as co-author).
 
@@ -81,4 +81,4 @@ Grasshopper: see [`docs/grasshopper/SETUP.md`](docs/grasshopper/SETUP.md). Specs
 
 ## License
 
-No license file is included yet, so all rights are reserved by default.
+MIT — see [LICENSE](LICENSE).

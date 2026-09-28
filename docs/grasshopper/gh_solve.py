@@ -5,7 +5,7 @@
 Inputs: spec(str), domain(str "aabb_2d"|"aabb_3d"), bounds(list[float] [x0,y0,(z0,)x1,y1,(z1)]).
 Outputs: realization(str), geometry(list of Breps), status(str)."""
 import sys, json
-_SRC = deixis_src if ("deixis_src" in globals() and deixis_src) else "~/deixis/src"
+_SRC = deixis_src if ("deixis_src" in globals() and deixis_src) else "/path/to/deixis/src"
 if _SRC not in sys.path: sys.path.insert(0, _SRC)
 from deixis.io import adapters
 import Rhino.Geometry as rg

@@ -14,7 +14,7 @@ each Grasshopper component just marshals inputs into one `deixis.io.adapters` ca
 ## 0. Requirements
 - Rhino **8** (has the Python 3 / CPython "Script" component). macOS or Windows.
 - The `deixis` checkout on disk (this repo). Note the absolute path to its `src/`
-  (default assumed in the scripts: `~/deixis/src` — edit if different,
+  (the scripts default to the placeholder `/path/to/deixis/src` — edit it,
   or feed a `deixis_src` string input).
 
 ## 1. Make one Script component per file

@@ -5,7 +5,7 @@
 Honest: tolerance-aware OBSERVATION (epistemic=observed_tolerant), never auto-invariant.
 Inputs: geometry(list of Breps/Meshes), region_ids(list of str), tolerance(float). Output: spec(str)."""
 import sys, json
-_SRC = deixis_src if ("deixis_src" in globals() and deixis_src) else "~/deixis/src"
+_SRC = deixis_src if ("deixis_src" in globals() and deixis_src) else "/path/to/deixis/src"
 if _SRC not in sys.path: sys.path.insert(0, _SRC)
 from deixis.io import adapters
 
